@@ -19,6 +19,7 @@ class CreateQuestionairsTable extends Migration
             $table->string('duration');
             $table->boolean('resumable');
             $table->boolean('published');
+            $table->integer('created_by');
             $table->timestamps();
         });
     }

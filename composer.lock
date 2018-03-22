@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "36e60d7743aac9782fbf255631d6bb82",
+    "content-hash": "d5bca48e56bbf3a25645858fcab9c285",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2173,57 +2173,6 @@
             "time": "2017-11-27T11:13:29+00:00"
         },
         {
-            "name": "twbs/bootstrap",
-            "version": "v4.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "8a628b943cf31ca0a002c08af661a95772480225"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/8a628b943cf31ca0a002c08af661a95772480225",
-                "reference": "8a628b943cf31ca0a002c08af661a95772480225",
-                "shasum": ""
-            },
-            "replace": {
-                "twitter/bootstrap": "self.version"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jacob Thornton",
-                    "email": "jacobthornton@gmail.com"
-                },
-                {
-                    "name": "Mark Otto",
-                    "email": "markdotto@gmail.com"
-                }
-            ],
-            "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-            "homepage": "https://getbootstrap.com",
-            "keywords": [
-                "JS",
-                "css",
-                "framework",
-                "front-end",
-                "mobile-first",
-                "responsive",
-                "sass",
-                "web"
-            ],
-            "time": "2018-01-18T18:29:48+00:00"
-        },
-        {
             "name": "vlucas/phpdotenv",
             "version": "v2.4.0",
             "source": {
@@ -2600,16 +2549,16 @@
         },
         {
             "name": "nunomaduro/collision",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/collision.git",
-                "reference": "e60011a179d97f33ee394865b1cec472247df3b9"
+                "reference": "245958b02c6a9edf24627380f368333ac5413a51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/e60011a179d97f33ee394865b1cec472247df3b9",
-                "reference": "e60011a179d97f33ee394865b1cec472247df3b9",
+                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/245958b02c6a9edf24627380f368333ac5413a51",
+                "reference": "245958b02c6a9edf24627380f368333ac5413a51",
                 "shasum": ""
             },
             "require": {
@@ -2658,7 +2607,7 @@
                 "php",
                 "symfony"
             ],
-            "time": "2018-03-20T21:27:23+00:00"
+            "time": "2018-03-21T20:11:24+00:00"
         },
         {
             "name": "phar-io/manifest",
