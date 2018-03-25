@@ -16,6 +16,7 @@ class CreateQuestionairsTable extends Migration
         Schema::create('questionairs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('time');
             $table->string('duration');
             $table->boolean('resumable');
             $table->boolean('published');

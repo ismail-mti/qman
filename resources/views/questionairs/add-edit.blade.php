@@ -1,23 +1,84 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
+@section('qr-add-edit')
+<form class="form-horizontal" action="/save_questionair" method="post">
+    {{ csrf_field() }}
+    <fieldset>
+        <legend>{{_('Create')}}</legend>
+        <input type="hidden" name="id" value="{{isset($qr_info->id) ? $qr_info->id : "" }}"/>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="quesionair_name">{{_('Questionair Name')}}</label>  
+            <div class="col-md-5">
+                <input id="quesionair_name" name="quesionair_name"  value="{{isset($qr_info->name) ? $qr_info->name :"" }}"type="text"  class="form-control input-md" required="">
             </div>
         </div>
+
+        <!-- Time Duration-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="duration">{{_('Duration')}}</label>
+            <div class="col-md-4">
+                <input id="time" name="time" value="{{isset($qr_info->time) ? $qr_info->time :"" }}" type="number"  class="form-control input-md" required="">
+            </div>
+            <div class="col-md-4">
+                <select id="duration" name="duration" class="form-control">
+                    <option {{isset($qr_info->duration) && $qr_info->duration == 'Minutes' ? "selected" :"" }}  value="Minutes">{{_('Minutes')}}</option>
+                    <option {{isset($qr_info->duration) && $qr_info->duration == 'Hours' ? "selected" :"" }} value="Hours">{{_('Hours')}}</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Resume Option -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="resumable">{{_('Can Resume')}}</label>
+            <div class="col-md-4"> 
+                <label class="radio-inline" for="resumable-0">
+                    <input type="radio" name="resumable" id="resumable-0" value="1" {{isset($qr_info->resumable) && $qr_info->resumable == '1' ? "checked" :"" }}>
+                    Yes
+                </label> 
+                <label class="radio-inline" for="resumable-1">
+                    <input type="radio" name="resumable" id="resumable-1" value="0" {{isset($qr_info->resumable) && $qr_info->resumable == '0' ? "checked" :"" }}>
+                    No
+                </label>
+            </div>
+        </div>
+        <!-- Publish Status-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="published">{{_('Publish Now')}}</label>
+            <div class="col-md-4"> 
+                <label class="radio-inline" for="published-0">
+                    <input type="radio" name="published" id="published-0" value="1"  {{isset($qr_info->published) && $qr_info->published == '1' ? "checked" :"" }}>
+                    Yes
+                </label> 
+                <label class="radio-inline" for="published-1">
+                    <input type="radio" name="published" id="published-1" value="0" {{isset($qr_info->published) && $qr_info->published == '0' ? "checked" : "" }}>
+                    No
+                </label>
+            </div>
+        </div>
+        <!-- Submit Forms -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="add-questionair"></label>
+            <div class="col-md-4">
+                <button id="add-questionair" type="submit" name="add-questionair" class="btn btn-default">{{_('Save')}}</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+@endsection
+<div class='form-group'>
+    <label class='col-md-4 control-label' for='qs_choice_single'>Choice 1 </label>
+    <div class='col-md-4'>
+        <div class='radio'>
+            <label for='qs_choice_single'>
+                <input type="text" name="qs_choice_single_val[]" placeholder="Enter Choice" />
+                <input type='radio' name='qs_choice_single_correct[]' id='qs_choices_ signle_choice_index' value='1' >Is Correct
+            </label>
+        </div>
+       
+    </div>
+    <div class='col-md-4'>
+     <button type="button" class="btn btn-default">Delete Choice</button>
     </div>
 </div>
-@endsection
