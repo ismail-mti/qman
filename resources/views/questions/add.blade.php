@@ -119,6 +119,7 @@
                 $("#answer_section_" + qs_index).append(text_ans);
             } else if (qs_type_sel == 2)
             {
+                signle_choice_index = 0;
                 $("#answer_section_" + qs_index).empty();
                 $("#answer_section_" + qs_index).append(mcq_single);
             } else if (qs_type_sel == 3)
