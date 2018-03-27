@@ -22,15 +22,11 @@ class QuestionController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-        $req_params = request()->route()->parameters();
-        $qr_id = -1;
-        if ($req_params) { {
-                $qr_id = $req_params['qr_id'];
-            }
-            $data = compact('qr_id');
-            return view('questions.add', $data);
-        }
+    public function create($qr_id) {
+        
+        $data = compact('qr_id');
+        return view('questions.add-edit', $data);
+
     }
 
     /**

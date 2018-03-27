@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('qr-add-edit')
-<form class="form-horizontal" action="/save_questionair" method="post">
+@section('content')
+<form class="form-horizontal" action="{{url('save_questionair')}}" method="post">
     {{ csrf_field() }}
     <fieldset>
         <legend>{{_('Create')}}</legend>
@@ -33,7 +33,7 @@
             <label class="col-md-4 control-label" for="resumable">{{_('Can Resume')}}</label>
             <div class="col-md-4"> 
                 <label class="radio-inline" for="resumable-0">
-                    <input type="radio" name="resumable" id="resumable-0" value="1" {{isset($qr_info->resumable) && $qr_info->resumable == '1' ? "checked" :"" }}>
+                    <input type="radio" name="resumable" id="resumable-0" value="1" checked >
                     Yes
                 </label> 
                 <label class="radio-inline" for="resumable-1">
@@ -47,7 +47,7 @@
             <label class="col-md-4 control-label" for="published">{{_('Publish Now')}}</label>
             <div class="col-md-4"> 
                 <label class="radio-inline" for="published-0">
-                    <input type="radio" name="published" id="published-0" value="1"  {{isset($qr_info->published) && $qr_info->published == '1' ? "checked" :"" }}>
+                    <input type="radio" name="published" id="published-0" value="1"  checked >
                     Yes
                 </label> 
                 <label class="radio-inline" for="published-1">
@@ -67,18 +67,3 @@
 </form>
 
 @endsection
-<div class='form-group'>
-    <label class='col-md-4 control-label' for='qs_choice_single'>Choice 1 </label>
-    <div class='col-md-4'>
-        <div class='radio'>
-            <label for='qs_choice_single'>
-                <input type="text" name="qs_choice_single_val[]" placeholder="Enter Choice" />
-                <input type='radio' name='qs_choice_single_correct[]' id='qs_choices_ signle_choice_index' value='1' >Is Correct
-            </label>
-        </div>
-       
-    </div>
-    <div class='col-md-4'>
-     <button type="button" class="btn btn-default">Delete Choice</button>
-    </div>
-</div>

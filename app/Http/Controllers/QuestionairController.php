@@ -32,11 +32,11 @@ class QuestionairController extends Controller {
         if ($qr_id != -1) {
             $questionair = Questionair::find($qr_id);
         }
-        $questionair->name = $req_data["quesionair_name"];
-        $questionair->time = $req_data["time"];
-        $questionair->duration = $req_data["duration"];
-        $questionair->resumable = $req_data["resumable"];
-        $questionair->published = $req_data["published"];
+        $questionair->name = request()->quesionair_name;
+        $questionair->time = request()->time;
+        $questionair->duration = request()->duration;
+        $questionair->resumable = request()->resumable;
+        $questionair->published = request()->published;
         $questionair->created_by = Auth()->user()->id;
         $questionair->created_at = now();
         $save_status = $questionair->save();
