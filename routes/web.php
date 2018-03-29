@@ -30,4 +30,6 @@ Route::get('/edit_questionair/{qr_id}', ['uses' =>'QuestionairController@addEdit
 Route::get('/del_questionair/{qr_id}', 'QuestionairController@delQuestionair')->name('del_questionair');
 
 Route::get('/question/add/{qr_id}', 'QuestionController@create')->name('add_question');
+Route::post('/save_question', 'QuestionController@saveQuestion');
+
 //Route::resource('questions', 'QuestionController');

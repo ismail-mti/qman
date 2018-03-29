@@ -33,7 +33,7 @@ function addOptionSingle(btn) {
 
     var row = $(`<tr>
                     <td>
-                        <input type="text" name="choice_single[` + index + `][]" class="form-control" value="" pattern="" title="">
+                        <input type="text" name="choice_single[` + index + `][]" class="form-control" value=""  title="">
                     </td>
                     <td>
                         <input type="radio" name="is_correct[` + index + `][]" >
@@ -54,7 +54,7 @@ function addOptionMulti(btn) {
 
     var row = $(`<tr>
                     <td>
-                        <input type="text" name="choice_multi[` + index + `][]" class="form-control" value="" pattern="" title="">
+                        <input type="text" name="choice_multi[` + index + `][]" class="form-control" value=""  title="">
                     </td>
                     <td>
                         <input type="checkbox" name="is_correct[` + index + `][]" >

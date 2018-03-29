@@ -14,7 +14,7 @@ class CreateQuestionChoicesTable extends Migration {
     public function up() {
         Schema::create('question_choices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('questions_id');
+            $table->integer('question_id');
             $table->string('choice');
             $table->boolean('is_correct');
 //            $table->foreign('questions_id')->references('id')->on('questions');

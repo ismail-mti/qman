@@ -7,30 +7,31 @@
 </div>
 
 
-<form>
+<form  action="{{url('save_question')}}" method="post">
+    {{ csrf_field() }}
+    <input type="hidden" value="{{$qr_id}}" name="qr_id" />
     <div class="container">
 
         <div id="questions">
-        @if(isset($questions))
+            @if(isset($questions))
             @foreach($questions as $question)
-                @include('questions.question')
+            @include('questions.question')
             @endforeach
-        @endif
+            @endif
         </div>
-        
-        
+
         <button id="btn-add-question" type="button" class="btn btn-default">Add Question</button>
-        
+
 
     </div>
 
     <br><br><br>
     <div class="container">
-        
+
         <button type="submit" class="btn btn-block btn-success">
-        
-         Save Questions</button>
-        
+
+            Save Questions</button>
+
     </div>
 
 
@@ -41,29 +42,29 @@
 
 <script>
 
-    $(document).ready(function(){
+$(document).ready(function () {
 
-        var question_number = 1;
+    var question_number = 0;
 
-        $('#btn-add-question').click(function(){
-            var new_question = $($('#question-partial').html());
+    $('#btn-add-question').click(function () {
+        var new_question = $($('#question-partial').html());
 
-            $.each(new_question.find('select,input:visible'), function(index, item){
-                $(item).attr('name', $(item).attr('name')+'['+question_number+']');
-            });
+        $.each(new_question.find('input:visible'), function (index, item) {
+            $(item).attr('name', $(item).attr('name') + '[' + question_number + ']');
+        });
 
-            $.each(new_question.find('input.hidden_input'), function(index, item){
-                $(item).val( question_number );
-            });
+        $.each(new_question.find('input.hidden_input'), function (index, item) {
+            $(item).val(question_number);
+        });
 
-            question_number++;
+        question_number++;
 
-            $('#questions').append(new_question);
-        })
+        $('#questions').append(new_question);
+    })
 
-    });
+});
 
-    
+
 </script>
 
 
