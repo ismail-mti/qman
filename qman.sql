@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2018 at 04:56 AM
+-- Generation Time: Mar 29, 2018 at 06:05 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -81,7 +81,6 @@ CREATE TABLE `questionairs` (
 --
 
 INSERT INTO `questionairs` (`id`, `name`, `time`, `duration`, `resumable`, `published`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, 'Maths', 30, 'Minutes', 1, 0, 2, '2018-03-23 07:06:29', '2018-03-23 07:06:29'),
 (2, 'Maths2', 30, 'Minutes', 1, 1, 2, '2018-03-23 07:07:38', '2018-03-23 07:07:38'),
 (3, 'Physics', 1, 'Hours', 1, 0, 2, '2018-03-23 11:16:22', '2018-03-23 11:16:22'),
 (4, 'Maths', 30, 'Minutes', 1, 0, 2, '2018-03-23 13:10:24', '2018-03-23 13:10:24'),
@@ -104,6 +103,19 @@ CREATE TABLE `questions` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `questionair_id`, `question_type_id`, `question`, `answer`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'What is your name?', 'Ismail', '2018-03-28 11:23:02', '2018-03-28 11:23:02'),
+(2, 1, 1, 'What is your name?', 'Ismail', '2018-03-28 11:23:57', '2018-03-28 11:23:57'),
+(4, 2, 1, 'What is your name?', 'Ismail', '2018-03-28 11:58:20', '2018-03-28 11:58:21'),
+(5, 2, 1, 'What is your name?', 'Ismail', '2018-03-28 11:58:21', '2018-03-28 11:58:21'),
+(6, 2, 1, 'What is your name?', 'Inaam', '2018-03-29 11:01:01', '2018-03-29 11:01:01'),
+(7, 3, 2, 'What is your name?', '', '2018-03-29 11:01:53', '2018-03-29 11:01:53'),
+(8, 3, 3, 'What is your name?', '', '2018-03-29 11:01:53', '2018-03-29 11:01:53');
+
 -- --------------------------------------------------------
 
 --
@@ -112,12 +124,21 @@ CREATE TABLE `questions` (
 
 CREATE TABLE `question_choices` (
   `id` int(10) UNSIGNED NOT NULL,
-  `questions_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
   `choice` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_correct` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `question_choices`
+--
+
+INSERT INTO `question_choices` (`id`, `question_id`, `choice`, `is_correct`, `created_at`, `updated_at`) VALUES
+(1, 7, 'khalid', 1, '2018-03-29 11:01:53', '2018-03-29 11:01:53'),
+(2, 8, 'asdasfaasf', 1, '2018-03-29 11:01:53', '2018-03-29 11:01:53'),
+(3, 8, 'sdasfafa', 0, '2018-03-29 11:01:53', '2018-03-29 11:01:53');
 
 -- --------------------------------------------------------
 
@@ -160,7 +181,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'ismail', 'm.ismail.naeem@gmail.com', '$2y$10$L3oOs.JBAuwCGDGOiSTmKeRB1h0jVJYreFOtrcR2Kms0K6.knYi3i', NULL, '2018-03-21 11:36:47', '2018-03-21 11:36:47'),
-(2, 'ismail', 'admin@qman.com', '$2y$10$wgj5GVPk9elklEhbPZvLpeVqR8HLdYVk1iPk/3BHsWb1.EWya/546', 'AIard3l7zmRybYZNG7pKp6vAQ1utJRkjmGsyzjIsU6dakljkMpvz25x2u72d', '2018-03-23 00:48:01', '2018-03-23 00:48:01');
+(2, 'ismail', 'admin@qman.com', '$2y$10$wgj5GVPk9elklEhbPZvLpeVqR8HLdYVk1iPk/3BHsWb1.EWya/546', 'JgZxPTQNg3jY6uhSym5ATTysKVJkpb3oV5fjVp63laTQxPJh8urINkqLd69e', '2018-03-23 00:48:01', '2018-03-23 00:48:01');
 
 --
 -- Indexes for dumped tables
@@ -229,13 +250,13 @@ ALTER TABLE `questionairs`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `question_choices`
 --
 ALTER TABLE `question_choices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `question_types`
