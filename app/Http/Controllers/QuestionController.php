@@ -39,7 +39,7 @@ class QuestionController extends Controller {
         DB::beginTransaction();
         try {
             $req_data = request()->all();
-
+//            dd($req_data);
             $qs_types = request()->question_type_id;
             $questions = request()->question;
             $answers = request()->answer;
@@ -47,7 +47,7 @@ class QuestionController extends Controller {
             $choices_single = request()->choice_single;
             $choices_multi = request()->choice_multi;
             $is_correct = request()->is_correct;
-//            dd($req_data);
+            $is_correct_multi = request()->is_correct_multi;
             for ($i = 0; $i < count($questions); $i++) {
                 $new_question = new Question;
                 $new_question->questionair_id = request()->qr_id;
@@ -59,12 +59,17 @@ class QuestionController extends Controller {
                 // Adding Question Choices
                 if ($qs_type != 1) {
                     $qs_choices = ($qs_type == 2) ? $choices_single[$i] : $choices_multi[$i];
-                    foreach ($qs_choices As $choice) {
-                        $j = 0;
+                    $choice_count = count($qs_choices);
+                    $correct_choices = ($qs_type == 2) ? $is_correct[$i] : $is_correct_multi[$i];
+                    for ($j = 0; $j < $choice_count; $j++) {
                         $qc = new QuestionChoice;
                         $qc->question_id = $new_question->id;
-                        $qc->choice = $choice;
-                        $qc->is_correct = $is_correct[$i][$j];
+                        $qc->choice = $qs_choices[$j];
+                        if (isset($is_correct[$j])) {
+                            $qc->is_correct = 1;
+                        } else {
+                            $qc->is_correct = 0;
+                        }
                         $qc->created_at = now();
                         $qc->save();
                         $j++;

@@ -3,7 +3,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Question Type:</label>
             <div class="col-sm-12">
-                <select name="question_type_id"  class="form-control" onchange="questionTypeChanged(this, this.value)">
+                <select name="question_type_id[]"  class="form-control" onchange="questionTypeChanged(this, this.value)">
                     <option value="1">Text</option>
                     <option value="2">Multiple Choice (Single Option)</option>
                     <option value="3">Multiple Choice (Multiple Options)</option>

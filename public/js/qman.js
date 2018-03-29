@@ -30,13 +30,14 @@ function addOptionSingle(btn) {
 
     var container = $(btn).closest('.mcq-single');
     var index = container.find('input.hidden_input').val();
+  var row_number = container.find('tbody tr').length;
 
     var row = $(`<tr>
                     <td>
                         <input type="text" name="choice_single[` + index + `][]" class="form-control" value=""  title="">
                     </td>
                     <td>
-                        <input type="radio" name="is_correct[` + index + `][]" >
+                        <input type="radio" value="`+ row_number +`"   name="is_correct[` + index + `][]" >
                     </td>
                     <td>
                         <button class="btn btn-danger" onclick="deleteChoice(this)">Delete Choice</button>
@@ -51,13 +52,15 @@ function addOptionMulti(btn) {
 
     var container = $(btn).closest('.mcq-multi');
     var index = container.find('input.hidden_input').val();
+    var row_number = container.find('tbody tr').length;
+
 
     var row = $(`<tr>
                     <td>
                         <input type="text" name="choice_multi[` + index + `][]" class="form-control" value=""  title="">
                     </td>
                     <td>
-                        <input type="checkbox" name="is_correct[` + index + `][]" >
+                        <input type="checkbox" value="`+ row_number +`" name="is_correct_multi[` + index + `][]" >
                     </td>
                     <td>
                         <button class="btn btn-danger" onclick="deleteChoice(this)">Delete Choice</button>
